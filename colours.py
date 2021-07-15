@@ -5,13 +5,6 @@ import operator
 from functools import reduce
 import psycopg2
 
-connection = psycopg2.connect(
-    host="localhost",
-    database="bincom",
-    user="postgres",
-    password=None,
-)
-
 
 def list_to_dict(list):
     """
@@ -125,6 +118,13 @@ def create_staging_table(cursor) -> None:
         );
     """)
 
+
+connection = psycopg2.connect(
+    host="localhost",
+    database="bincom",
+    user="postgres",
+    password="password",
+)
 
 with connection.cursor() as cursor:
     create_staging_table(cursor)

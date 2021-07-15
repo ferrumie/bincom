@@ -4,5 +4,6 @@ def fibonacci(num):
         a, b = b, a + b
     return a
 
+
 fib50 = fibonacci(50)
 print(fib50)
