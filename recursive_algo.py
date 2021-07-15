@@ -18,6 +18,6 @@ n = len(arr)
 x = input("enter a number\n")
 index = recSearch(arr, 0, n-1, int(x))
 if index != -1:
-    print("Element", int(x), "is present at index %d" % (index))
+    print("Number", int(x), "is present at index %d" % (index))
 else:
-    print("Element %d is not present" % (int(x)))
+    print("Number %d is not present" % (int(x)))
