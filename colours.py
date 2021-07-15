@@ -11,6 +11,8 @@ connection = psycopg2.connect(
     user="postgres",
     password=None,
 )
+
+
 def list_to_dict(list):
     """
     To convert a list to a dictionary with the even elements mapped to the odd elements
@@ -99,7 +101,30 @@ print(f"median colour is the {variance_col} colour")
 # total number of red
 red_num = colour_count.get("RED")
 
-# probability of picking a red colour is 
+# probability of picking a red colour is
 prob = red_num/total
 print(f"probability of picking red is {prob*100} percent")
 
+
+def create_staging_table(cursor) -> None:
+    cursor.execute("""
+        DROP TABLE IF EXISTS staging_beers;
+        CREATE UNLOGGED TABLE staging_beers (
+            BLEW                  INTEGER,
+            BLACK                INTEGER,
+            BLUE             INTEGER,
+            BROWN        INTEGER,
+            CREAM         INTEGER,
+            RED           INTEGER,
+            ARSH                 INTEGER,
+            WHITE                 INTEGER,
+            YELLOW           INTEGER,
+            GREEN           INTEGER,
+            PINK                 INTEGER,
+            ORANGE                 INTEGER
+        );
+    """)
+
+
+with connection.cursor() as cursor:
+    create_staging_table(cursor)
